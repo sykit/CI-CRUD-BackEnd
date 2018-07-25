@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/CI';
-$config['base_asset'] = 'http://localhost/CI/asset';
+$config['base_url'] = 'http://localhost/CI-CRUD-BackEnd';
+$config['base_asset'] = 'http://localhost/CI-CRUD-BackEnd/asset';
 
 /*
 |--------------------------------------------------------------------------
