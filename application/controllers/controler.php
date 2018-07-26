@@ -7,7 +7,8 @@ class controler extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        if ($this->session->userdata('status') != "login") {
+//        echo $this->session->userdata('status');
+        if ($this->session->userdata('status') != "connected") {
             redirect("login");
         }
         $this->load->model('model'); // Load model ke controller ini
@@ -15,7 +16,7 @@ class controler extends CI_Controller {
 
     public function index() {
         $data['home'] = $this->model->view();
-        $this->load->view('login', $data);
+        $this->load->view('home', $data);
     }
 
     public function tambah() {
