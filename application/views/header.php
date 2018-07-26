@@ -20,6 +20,7 @@
                         <a href="<?php echo base_url('view_data'); ?>" class="list-group-item list-group-item-action">Lihat Data</a>
                         <a href="<?php echo base_url('add_data'); ?>" class="list-group-item list-group-item-action">Tambah Data</a>
                         <a href="<?php echo base_url('edit_home'); ?>" class="list-group-item list-group-item-action">Edit Home</a>
+                        <a href="<?php echo base_url('login/logout'); ?>" class="list-group-item list-group-item-action">Logout</a>
                     </div>
                 </div>
                 <div class="col-9 add-padding-top" style="background-image:url(<?php echo base_asset(); ?>Image/background_home.jpg);background-repeat: no-repeat;background-size: cover;overflow-y: scroll">

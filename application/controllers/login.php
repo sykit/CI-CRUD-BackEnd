@@ -8,7 +8,7 @@ class login extends CI_Controller {
     public function __construct() {
         // Call the CI_Model constructor
         parent::__construct();
-         $this->load->model('login_model');
+        $this->load->model('login_model');
     }
 
     function index() {
@@ -35,7 +35,8 @@ class login extends CI_Controller {
 
             redirect();
         } else {
-            echo "Username dan password salah !";
+            $data['status'] = "Username dan password salah !";
+            $this->load->view('login', $data);
         }
     }
 
