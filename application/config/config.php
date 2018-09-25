@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/CI-CRUD-BackEnd';
+$config['base_url_admin'] = 'http://localhost/CI-CRUD-BackEnd/admin';
 $config['base_asset'] = 'http://localhost/CI-CRUD-BackEnd/asset';
 
 /*

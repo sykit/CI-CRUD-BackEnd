@@ -321,6 +321,25 @@ class CI_Config {
 
 		return $base_url.$this->_uri_string($uri);
 	}
+	public function base_url_admin($uri = '', $protocol = NULL)
+	{
+		$base_url_admin = $this->slash_item('base_url_admin');
+
+		if (isset($protocol))
+		{
+			// For protocol-relative links
+			if ($protocol === '')
+			{
+				$base_url_admin = substr($base_url_admin, strpos($base_url_admin, '//'));
+			}
+			else
+			{
+				$base_url_admin = $protocol.substr($base_url_admin, strpos($base_url_admin, '://'));
+			}
+		}
+
+		return $base_url_admin.$this->_uri_string($uri);
+	}
 	public function base_asset($uri = '', $protocol = NULL)
 	{
 		$base_asset = $this->slash_item('base_asset');

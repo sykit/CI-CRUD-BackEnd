@@ -86,6 +86,10 @@ if ( ! function_exists('base_url'))
 	{
 		return get_instance()->config->base_url($uri, $protocol);
 	}
+	function base_url_admin($uri = '', $protocol = NULL)
+	{
+		return get_instance()->config->base_url_admin($uri, $protocol);
+	}
 }
 if ( ! function_exists('base_asset'))
 {

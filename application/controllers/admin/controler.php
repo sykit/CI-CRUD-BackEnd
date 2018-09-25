@@ -9,25 +9,25 @@ class controler extends CI_Controller {
         parent::__construct();
 //        echo $this->session->userdata('status');
         if ($this->session->userdata('status') != "connected") {
-            redirect("login");
+            redirect("admin/login");
         }
-        $this->load->model('model'); // Load model ke controller ini
+        $this->load->model('admin/model'); // Load model ke controller ini
     }
 
     public function index() {
         $data['home'] = $this->model->view();
-        $this->load->view('home', $data);
+        $this->load->view('admin/home', $data);
     }
 
     public function tambah() {
         if ($this->input->post('submit')) { // Jika user mengklik tombol submit yang ada di form
             if ($this->model->validation("save")) { // Jika validasi sukses atau hasil validasi adalah TRUE
                 $this->model->save(); // Panggil fungsi save() yang ada di model.php
-                redirect('home');
+                redirect('admin/home');
             }
         }
 
-        $this->load->view('home/form_tambah');
+        $this->load->view('admin/home/form_tambah');
     }
 
 }
