@@ -13,12 +13,12 @@ class model extends CI_Model {
     // Fungsi untuk menampilkan data belajar berdasarkan NIS nya
     public function view_by($id) {
         $this->db->where('id', $id);
-        return $this->db->get('users')->row();
+        return $this->db->get('mahasiswa')->row();
     }
 
     public function view_data() {
         $this->db->order_by('id', 'ASC');
-        $query = $this->db->get('users');
+        $query = $this->db->get('mahasiswa');
         return $query->result();
     }
 
@@ -46,15 +46,19 @@ class model extends CI_Model {
     public function save() {
         $data = array(
             "full_name" => $this->input->post('full_name'),
-            "birth_place" => $this->input->post('birth_place'),
-            "birth_date" => $this->input->post('birth_date'),
+            "email" => $this->input->post('email'),
+            "phone_mobile" => $this->input->post('phone_mobile'),
             "gender" => $this->input->post('gender'),
-            "address" => $this->input->post('address')
+            "alamat" => $this->input->post('alamat'),
+            "tahun_masuk" => $this->input->post('tahun_masuk'),
+            "jurusan" => $this->input->post('jurusan')
         );
+
+         // Untuk mengeksekusi perintah insert data
 
 //        $this->db->insert('users', $data); // Untuk mengeksekusi perintah insert data
         $return_message = 'Penambahan Data Sukses';
-        if (!$this->db->insert('users', $data)) {
+        if (!$this->db->insert('mahasiswa', $data)) {
             $this->session->set_userdata('activity_status', 'Failed');
             $error = $this->db->error(); // Has keys 'code' and 'message'
             $return_message =  'Error '.$error['code'].' : '.$error['message'] ; // Has keys 'code' and 'message'
@@ -68,16 +72,19 @@ class model extends CI_Model {
     public function edit($id) {
         $data = array(
             "full_name" => $this->input->post('full_name'),
-            "birth_place" => $this->input->post('birth_place'),
-            "birth_date" => $this->input->post('birth_date'),
+            "email" => $this->input->post('email'),
+            "phone_mobile" => $this->input->post('phone_mobile'),
             "gender" => $this->input->post('gender'),
-            "address" => $this->input->post('address')
+            "alamat" => $this->input->post('alamat'),
+            "tahun_masuk" => $this->input->post('tahun_masuk'),
+            "jurusan" => $this->input->post('jurusan')
         );
 
+        
         $this->db->where('id', $id);
 //        $this->db->update('users', $data); // Untuk mengeksekusi perintah update data
         $return_message = 'Perubahan Data Sukses';
-        if (!$this->db->update('users', $data)) {
+        if (!$this->db->update('mahasiswa', $data)) {
             $this->session->set_userdata('activity_status', 'Failed');
             $error = $this->db->error(); // Has keys 'code' and 'message'
             $return_message =  'Error '.$error['code'].' : '.$error['message'] ; // Has keys 'code' and 'message'
@@ -92,7 +99,7 @@ class model extends CI_Model {
         $this->db->where('id', $id);
 //        $this->db->delete('users'); // Untuk mengeksekusi perintah delete data
         $return_message = 'Hapus Data Sukses';
-        if (!$this->db->delete('users')) {
+        if (!$this->db->delete('mahasiswa')) {
             $this->session->set_userdata('activity_status', 'Failed');
             $error = $this->db->error(); // Has keys 'code' and 'message'
             $return_message =  'Error '.$error['code'].' : '.$error['message'] ; // Has keys 'code' and 'message'
