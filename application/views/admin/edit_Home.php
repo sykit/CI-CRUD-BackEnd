@@ -1,6 +1,23 @@
 <?php
 // Create database connection using config file
 include 'header.php';
+$result_status = $this->session->userdata('activity_status');
+$result_message = $this->session->userdata('activity_message');
+if (!empty($result_status)) {
+    if ($result_status === 'Successful') {
+        echo ' <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
+            <strong>'.$result_message.'!</strong>.
+            </div>';
+    }else{
+          echo '<div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
+                <strong>'.$result_message.'</strong>.
+                </div>';
+    }
+    $this->session->set_userdata('activity_status','');
+    $this->session->set_userdata('activity_message','');
+}
 ?>
 
 <?php echo form_open('admin/edit_home/save/'.$home->id); ?>

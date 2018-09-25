@@ -29,7 +29,6 @@ class login extends CI_Controller {
             $data_session = array(
                 'nama' => $username,
                 'status' => "connected",
-                'message' => ""
             );
 
             $this->session->set_userdata($data_session);

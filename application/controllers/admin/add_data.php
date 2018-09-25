@@ -18,7 +18,7 @@ class add_data extends CI_Controller {
            $result =  $this->model->save(); // Panggil fungsi save() yang ada di model.php
             
         }
-        $this->session->set_userdata('activity', $result);
+        $this->session->set_userdata('activity_message', $result);
         redirect('admin/view_data/');
     }
 

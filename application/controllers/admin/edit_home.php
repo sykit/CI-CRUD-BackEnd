@@ -23,7 +23,8 @@ class edit_home extends CI_Controller {
     public function save($id) {
         if ($this->input->post('submit')) { // Jika user mengklik tombol submit yang ada di form
 //      if($this->model->validation("update")){ // Jika validasi sukses atau hasil validasi adalah TRUE
-            $this->home->edit($id); // Panggil fungsi edit() yang ada di model.php
+            $result = $this->home->edit($id); // Panggil fungsi edit() yang ada di model.php
+            $this->session->set_userdata('activity_message', $result);
             redirect('admin/edit_home');
 //      }
         }

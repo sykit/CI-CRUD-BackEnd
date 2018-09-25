@@ -2,19 +2,22 @@
 
 <?php
 
-$result = $this->session->userdata('activity');
-if (!empty($result)) {
-    if ($result === 'Insert successful') {
+$result_status = $this->session->userdata('activity_status');
+$result_message = $this->session->userdata('activity_message');
+if (!empty($result_status)) {
+    if ($result_status === 'Successful') {
         echo ' <div class="alert alert-success alert-dismissible fade show">
             <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
-            <strong>'.$result.'!</strong>.
+            <strong>'.$result_message.'!</strong>.
             </div>';
     }else{
           echo '<div class="alert alert-danger alert-dismissible fade show">
                 <button type="button" class="close close_alert" data-dismiss="alert">&times;</button>
-                <strong>'.$result.'</strong>.
+                <strong>'.$result_message.'</strong>.
                 </div>';
     }
+    $this->session->set_userdata('activity_status','');
+    $this->session->set_userdata('activity_message','');
 }
 if (!empty($get_data)) { // Jika data siswa tidak sama dengan kosong, artinya jika data siswa ada
     echo '<table id="table" class="table table-striped" style="background-color: rgba(255,255,255,0.5);">
@@ -40,7 +43,7 @@ if (!empty($get_data)) { // Jika data siswa tidak sama dengan kosong, artinya ji
         echo "<td>" . $data->birth_date . "</td>";
         echo "<td>" . $data->gender . "</td>";
         echo "<td>" . $data->address . "</td>";
-        echo "<td><a href='" . base_url_admin('view_data/edit/') . $data->id . "' class='btn btn-info' role='button'>Edit</a>&nbsp&nbsp&nbsp<a href='" . base_url_admin('view_data/delete/') . $data->id . "'class='btn btn-info' role='button'>Delete</a></td></tr>";
+        echo "<td><a href='" . base_url_admin('view_data/edit/') . $data->id . "' class='btn btn-info' role='button'>Edit</a>&nbsp&nbsp&nbsp<button onclick='delete_data(\"". $data->id . "\",\"". $data->full_name . "\")' class='btn btn-info' role='button'>Delete</button></td></tr>";
     }
     echo ' </tbody>
 </table>';

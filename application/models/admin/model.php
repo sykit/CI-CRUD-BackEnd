@@ -53,10 +53,13 @@ class model extends CI_Model {
         );
 
 //        $this->db->insert('users', $data); // Untuk mengeksekusi perintah insert data
-        $return_message = 'Insert successful';
+        $return_message = 'Penambahan Data Sukses';
         if (!$this->db->insert('users', $data)) {
+            $this->session->set_userdata('activity_status', 'Failed');
             $error = $this->db->error(); // Has keys 'code' and 'message'
             $return_message =  'Error '.$error['code'].' : '.$error['message'] ; // Has keys 'code' and 'message'
+        }else{
+            $this->session->set_userdata('activity_status', 'Successful');
         }
         return $return_message;
     }
@@ -72,13 +75,31 @@ class model extends CI_Model {
         );
 
         $this->db->where('id', $id);
-        $this->db->update('users', $data); // Untuk mengeksekusi perintah update data
+//        $this->db->update('users', $data); // Untuk mengeksekusi perintah update data
+        $return_message = 'Perubahan Data Sukses';
+        if (!$this->db->update('users', $data)) {
+            $this->session->set_userdata('activity_status', 'Failed');
+            $error = $this->db->error(); // Has keys 'code' and 'message'
+            $return_message =  'Error '.$error['code'].' : '.$error['message'] ; // Has keys 'code' and 'message'
+        }else{
+            $this->session->set_userdata('activity_status', 'Successful');
+        }
+        return $return_message;
     }
 
     // Fungsi untuk melakukan menghapus data belajar berdasarkan NIS belajar
     public function delete($id) {
         $this->db->where('id', $id);
-        $this->db->delete('users'); // Untuk mengeksekusi perintah delete data
+//        $this->db->delete('users'); // Untuk mengeksekusi perintah delete data
+        $return_message = 'Hapus Data Sukses';
+        if (!$this->db->delete('users')) {
+            $this->session->set_userdata('activity_status', 'Failed');
+            $error = $this->db->error(); // Has keys 'code' and 'message'
+            $return_message =  'Error '.$error['code'].' : '.$error['message'] ; // Has keys 'code' and 'message'
+        }else{
+            $this->session->set_userdata('activity_status', 'Successful');
+        }
+        return $return_message;
     }
 
 }
